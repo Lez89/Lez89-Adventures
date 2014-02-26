@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>StartEvents</name>
+    <events>
+        <event-block sid="3939865611923323">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="9110820820746366" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="9859294630076206" type="TitleText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="4143842153734302" type="StartText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="1817571401184049" type="LinkText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="0" name="Play" sid="1633777060701495" type="Audio">
+                    <param id="0" name="Audio file">win</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="4" name="Preload" sid="3729040534303324" type="Audio">
+                    <param id="0" name="Audio file">Get-out-of-there</param>
+                </action>
+                <action id="4" name="Preload" sid="6208334122518164" type="Audio">
+                    <param id="0" name="Audio file">explosion</param>
+                </action>
+                <action id="4" name="Preload" sid="3586614069022407" type="Audio">
+                    <param id="0" name="Audio file">kiss</param>
+                </action>
+                <action id="4" name="Preload" sid="9821794843026955" type="Audio">
+                    <param id="0" name="Audio file">Lezzo</param>
+                </action>
+                <action id="4" name="Preload" sid="7470239251913414" type="Audio">
+                    <param id="0" name="Audio file">shoot</param>
+                </action>
+                <action id="4" name="Preload" sid="372051240739482" type="Audio">
+                    <param id="0" name="Audio file">warning</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6985444783566796">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="98570169677418" type="Keyboard">
+                    <param id="0" name="Key">13 (Return)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="33" name="Stop all" sid="1054764156663908" type="Audio" />
+                <action id="-2" name="Go to layout" sid="5540618845091674" type="System">
+                    <param id="0" name="Layout">Game</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5547625041271175">
+            <conditions>
+                <condition id="6" name="On object clicked" sid="2779195871037782" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">LinkText</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="8" name="Open URL in new window" sid="3605371341606969" type="Browser">
+                    <param id="0" name="URL">&quot;https://www.facebook.com/Lez89&quot;</param>
+                    <param id="1" name="Tag">&quot;lezPageWindow&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8022885439921575">
+            <conditions>
+                <condition id="7" name="Cursor is over object" sid="5364973673346991" type="Mouse">
+                    <param id="0" name="Object">LinkText</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set cursor style" sid="2938491123130073" type="Mouse">
+                    <param id="0" name="Cursor style">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8367748318506832">
+            <conditions>
+                <condition id="7" inverted="1" name="Cursor is over object" sid="9818094787577273" type="Mouse">
+                    <param id="0" name="Object">LinkText</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Set cursor style" sid="3018611041007201" type="Mouse">
+                    <param id="0" name="Cursor style">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>EndEvents</name>
+    <events>
+        <event-block sid="2090476982714826">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="3125819533453829" type="System" />
+            </conditions>
+            <actions>
+                <action id="5" name="Set web font" sid="4730637601627018" type="GratsText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="0" name="Play" sid="5310678546891385" type="Audio">
+                    <param id="0" name="Audio file">win</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="0" name="Set text" sid="5596842654808293" type="FinishText">
+                    <param id="0" name="Text">&quot;SEI RIUSCITO A DIVENTARE FAMOSO SU YOUTUBE CON BEN &quot; &amp; subscribers &amp; &quot; ISCRITTI&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="5530941720641892" type="FinishText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action behavior="Flash" id="0" name="Flash" sid="7171033107525449" type="GratsText">
+                    <param id="0" name="&apos;On&apos; time">0.5</param>
+                    <param id="1" name="&apos;Off&apos; time">0.3</param>
+                    <param id="2" name="Duration">5.0</param>
+                </action>
+                <action id="5" name="Set web font" sid="5698853311278125" type="StartText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9712149357050138">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="682430195585236" type="Keyboard">
+                    <param id="0" name="Key">13 (Return)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="9" name="Reload" sid="572628107790054" type="Browser" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

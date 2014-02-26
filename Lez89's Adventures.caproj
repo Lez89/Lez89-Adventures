@@ -10,14 +10,25 @@
     <unique-id>2m2oqhlgof90t</unique-id>
     <saved-with-version>16300</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
         <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
+        <behavior author="Rex.Rainbow" id="Rex_Swing" version="1">Swing</behavior>
         <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+        <behavior author="Scirra" id="custom" version="1">Custom Movement</behavior>
         <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
         <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -28,13 +39,14 @@
         <height>480</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
+    <first-layout>Start</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
-        <prop name="Enable WebGL">On</prop>
+        <prop name="Enable WebGL">Off</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Fullscreen scaling">High quality</prop>
-        <prop name="Loader style">Progress bar only</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
         <prop name="Orientations">Landscape</prop>
         <prop name="Pause on unfocus">No</prop>
         <prop name="Physics engine">Box2D web</prop>
@@ -60,6 +72,8 @@
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="413848378483479" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                         <image-point name="PoopSpawn" x="0.989362" y="0.730469" />
+                        <image-point name="Imagepoint 2" x="0.994681" y="0.519531" />
+                        <image-point name="Imagepoint 3" x="0.989362" y="0.945313" />
                         <collision-poly>
                             <point x="0.148936" y="0.109375" />
                             <point x="0.5" y="0.00390625" />
@@ -101,7 +115,7 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Xbox" sid="8026790236078071">
+        <object-type name="Enemy" sid="8026790236078071">
             <plugin id="Sprite" />
             <behaviors>
                 <behavior-type name="DestroyOutsideLayout" sid="8068644864286329">
@@ -112,7 +126,7 @@
                 </behavior-type>
             </behaviors>
             <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9361271875818973" speed="5">
+                <animation framecount="11" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9361271875818973" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5">
                         <collision-poly>
                             <point x="0.148438" y="0.148438" />
@@ -125,20 +139,398 @@
                             <point x="0" y="0.5" />
                         </collision-poly>
                     </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.375" y="0.484848" />
+                            <point x="0.5" y="0.040404" />
+                            <point x="0.773438" y="0.292929" />
+                            <point x="0.765625" y="0.5" />
+                            <point x="0.878906" y="0.843434" />
+                            <point x="0.5" y="0.984848" />
+                            <point x="0.105469" y="0.863636" />
+                            <point x="0.375" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.377273" y="0.324219" />
+                            <point x="0.5" y="0.00390625" />
+                            <point x="0.713636" y="0.246094" />
+                            <point x="0.877273" y="0.5" />
+                            <point x="0.872727" y="0.890625" />
+                            <point x="0.5" y="0.90625" />
+                            <point x="0.118182" y="0.898438" />
+                            <point x="0.254545" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.25" y="0.140625" />
+                            <point x="0.5" y="0.0390625" />
+                            <point x="0.694444" y="0.171875" />
+                            <point x="0.736111" y="0.5" />
+                            <point x="0.840278" y="0.910156" />
+                            <point x="0.5" y="0.515625" />
+                            <point x="0.201389" y="0.886719" />
+                            <point x="0.263889" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.015625" y="0.0571429" />
+                            <point x="0.5" y="0.428571" />
+                            <point x="0.992188" y="0.0285714" />
+                            <point x="0.964844" y="0.5" />
+                            <point x="0.835938" y="0.4" />
+                            <point x="0.5" y="0.657143" />
+                            <point x="0.09375" y="0.657143" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.154867" y="0.136719" />
+                            <point x="0.5" y="0.09375" />
+                            <point x="0.845133" y="0.136719" />
+                            <point x="0.986726" y="0.5" />
+                            <point x="0.880531" y="0.894531" />
+                            <point x="0.5" y="0.917969" />
+                            <point x="0.115044" y="0.898438" />
+                            <point x="0.00442478" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.501961">
+                        <collision-poly>
+                            <point x="0.101563" y="0.101961" />
+                            <point x="0.5" y="0" />
+                            <point x="0.898438" y="0.101961" />
+                            <point x="1" y="0.498039" />
+                            <point x="0.890625" y="0.890196" />
+                            <point x="0.5" y="1" />
+                            <point x="0.109375" y="0.890196" />
+                            <point x="0" y="0.498039" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.183594" y="0.183594" />
+                            <point x="0.5" y="0.0546875" />
+                            <point x="0.816406" y="0.183594" />
+                            <point x="0.949219" y="0.5" />
+                            <point x="0.828125" y="0.828125" />
+                            <point x="0.5" y="0.96875" />
+                            <point x="0.171875" y="0.828125" />
+                            <point x="0.0546875" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.502058" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.131687" y="0.125" />
+                            <point x="0.497942" y="0.015625" />
+                            <point x="0.847737" y="0.144531" />
+                            <point x="0.99177" y="0.5" />
+                            <point x="0.860082" y="0.867188" />
+                            <point x="0.497942" y="0.972656" />
+                            <point x="0.17284" y="0.835938" />
+                            <point x="0.037037" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.502762">
+                        <collision-poly>
+                            <point x="0.121094" y="0.171271" />
+                            <point x="0.5" y="0.220994" />
+                            <point x="0.910156" y="0.127072" />
+                            <point x="0.871094" y="0.497238" />
+                            <point x="0.808594" y="0.729282" />
+                            <point x="0.5" y="0.729282" />
+                            <point x="0.171875" y="0.756906" />
+                            <point x="0.101563" y="0.497238" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.108" y="0.108" />
+                            <point x="0.5" y="0.008" />
+                            <point x="0.888" y="0.112" />
+                            <point x="0.904" y="0.5" />
+                            <point x="0.756" y="0.756" />
+                            <point x="0.5" y="0.956" />
+                            <point x="0.24" y="0.76" />
+                            <point x="0.092" y="0.5" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Background" sid="1919909108682243">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="Browser" sid="8356019730894607">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type name="Explosion" sid="5387268089693611">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="DestroyOutsideLayout" sid="1020623870551753">
+                    <behavior id="destroy" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="25" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="171067259567655" speed="20">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.504132" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Audio" sid="8720128175420042">
+            <plugin id="Audio" />
+        </object-type>
+        <object-type name="SubsText" sid="8621075023729253">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Flash" sid="9669942885900774">
+                    <behavior id="Flash" />
+                </behavior-type>
+                <behavior-type name="Swing" sid="6699939695185223">
+                    <behavior id="Rex_Swing" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="Bonus" sid="2984282969101418">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="DestroyOutsideLayout" sid="9446101514202157">
+                    <behavior id="destroy" />
+                </behavior-type>
+                <behavior-type name="Fade" sid="5700854173025077">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9796663781222796" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.145455" y="0.119403" />
+                            <point x="0.5" y="0.0149254" />
+                            <point x="0.836364" y="0.134328" />
+                            <point x="0.981818" y="0.5" />
+                            <point x="0.763636" y="0.80597" />
+                            <point x="0.5" y="0.985075" />
+                            <point x="0.154545" y="0.873134" />
+                            <point x="0.0818182" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="BonusText" sid="9836462656744235">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Fade" sid="9210232877503431">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="WarningText" sid="4722656918386113">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Flash" sid="640210269328163">
+                    <behavior id="Flash" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="Adblock" sid="5255811457943186">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="health" sid="7535824398726786" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="CustomMovement" sid="4323974136276588">
+                    <behavior id="custom" />
+                </behavior-type>
+                <behavior-type name="DestroyOutsideLayout" sid="7072959828301762">
+                    <behavior id="destroy" />
+                </behavior-type>
+                <behavior-type name="Solid" sid="1775799758714506">
+                    <behavior id="solid" />
+                </behavior-type>
+                <behavior-type name="Fade" sid="5802324573365293">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1726509741389114" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <image-point name="Spawn1" x="0.163043" y="0.119565" />
+                        <image-point name="Spawn2" x="-0.00362319" y="0.481884" />
+                        <image-point name="Spawn3" x="0.123188" y="0.844203" />
+                        <image-point name="Imagepoint 4" x="0.735507" y="0.195652" />
+                        <image-point name="Imagepoint 5" x="0.253623" y="0.297101" />
+                        <image-point name="Imagepoint 6" x="0.442029" y="0.224638" />
+                        <image-point name="Imagepoint 7" x="0.778986" y="0.5" />
+                        <image-point name="Imagepoint 8" x="0.481884" y="0.481884" />
+                        <image-point name="Imagepoint 9" x="0.278986" y="0.735507" />
+                        <image-point name="Imagepoint 10" x="0.456522" y="0.833333" />
+                        <image-point name="Imagepoint 11" x="0.771739" y="0.721014" />
+                        <collision-poly>
+                            <point x="0.144928" y="0.144928" />
+                            <point x="0.5" y="0.00362319" />
+                            <point x="0.855072" y="0.144928" />
+                            <point x="0.996377" y="0.5" />
+                            <point x="0.855072" y="0.855072" />
+                            <point x="0.5" y="0.996377" />
+                            <point x="0.144928" y="0.855072" />
+                            <point x="0.00362319" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="AdblockBullet" sid="863451549317609">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="6772723387697673">
+                    <behavior id="Bullet" />
+                </behavior-type>
+                <behavior-type name="DestroyOutsideLayout" sid="7082481264057991">
+                    <behavior id="destroy" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1195021884814577" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.144928" y="0.144928" />
+                            <point x="0.5" y="0.00362319" />
+                            <point x="0.855072" y="0.144928" />
+                            <point x="0.996377" y="0.5" />
+                            <point x="0.855072" y="0.855072" />
+                            <point x="0.5" y="0.996377" />
+                            <point x="0.144928" y="0.855072" />
+                            <point x="0.00362319" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="GratsText" sid="3206606134635703">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Flash" sid="9808281915165964">
+                    <behavior id="Flash" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="FinishText" sid="168331736656012">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="StartText" sid="652167862346393">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Sprite" sid="5564420012020937">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6083640880878891" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.148936" y="0.109375" />
+                            <point x="0.5" y="0.00390625" />
+                            <point x="0.851064" y="0.109375" />
+                            <point x="0.962766" y="0.5" />
+                            <point x="0.851064" y="0.890625" />
+                            <point x="0.5" y="0.976563" />
+                            <point x="0.207447" y="0.847656" />
+                            <point x="0.0265957" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TitleText" sid="9504865052378492">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Keyboard" sid="1631390689002809">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Mouse" sid="1347481341115077">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="LinkText" sid="397294038028904">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families />
     <layout-folder expanded="1">
-        <layout>Layout 1.xml</layout>
+        <layout>Game.xml</layout>
+        <layout>End.xml</layout>
+        <layout>Start.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
-        <event-sheet>Event sheet 1.xml</event-sheet>
+        <event-sheet>GameEvents.xml</event-sheet>
+        <event-sheet>EndEvents.xml</event-sheet>
+        <event-sheet>StartEvents.xml</event-sheet>
     </event-folder>
-    <global-instances />
-    <sounds-folder expanded="1" />
-    <music-folder expanded="1" />
+    <global-instances>
+        <global-instance type="Browser" uid="4" />
+        <global-instance type="Audio" uid="6">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+                <speed-of-sound>5000</speed-of-sound>
+                <doppler-factor>1</doppler-factor>
+            </properties>
+        </global-instance>
+        <global-instance type="Keyboard" uid="19" />
+        <global-instance type="Mouse" uid="21" />
+    </global-instances>
+    <sounds-folder expanded="1">
+        <file name="explosion.m4a" />
+        <file name="explosion.ogg" />
+        <file name="explosion.wav" />
+        <file name="shoot.ogg" />
+        <file name="Lezzo.m4a" />
+        <file name="Lezzo.ogg" />
+        <file name="Lezzo.wav" />
+        <file name="kiss.m4a" />
+        <file name="kiss.ogg" />
+        <file name="kiss.wav" />
+        <file name="warning.ogg" />
+    </sounds-folder>
+    <music-folder expanded="1">
+        <file name="Get-out-of-there.ogg" />
+        <file name="win.ogg" />
+    </music-folder>
     <files-folder expanded="1">
         <file-folder expanded="0" name="Icons">
             <file name="icon-16.png" />
@@ -148,11 +540,10 @@
             <file name="icon-256.png" />
             <file name="loading-logo.png" />
         </file-folder>
-        <file name="lez89.png" />
-        <file name="poop.png" />
-        <file name="scienziatobm.png" />
-        <file name="Playstation_logo.png" />
-        <file name="Tux.png" />
-        <file name="xbox.png" />
+        <file name="minercraftory-webfont.eot" />
+        <file name="minercraftory-webfont.svg" />
+        <file name="minercraftory-webfont.ttf" />
+        <file name="minercraftory-webfont.woff" />
+        <file name="stylesheet.css" />
     </files-folder>
 </c2project>

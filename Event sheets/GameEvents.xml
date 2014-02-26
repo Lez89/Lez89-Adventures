@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GameEvents</name>
+    <events>
+        <variable constant="0" name="pointschanged" sid="4355927829998026" static="0" type="number">0</variable>
+        <variable constant="0" name="bgSpeed" sid="276657766903616" static="0" type="number">2</variable>
+        <variable constant="0" name="bossJoined" sid="9155577407381667" static="0" type="number">0</variable>
+        <variable constant="1" name="PHASE3SWITCHTRESHOLD" sid="7647003000673785" static="0" type="number">25000</variable>
+        <variable constant="1" name="PHASE2SWITCHTRESHOLD" sid="3729880029546708" static="0" type="number">5000</variable>
+        <variable constant="0" name="phase" sid="7207743613137981" static="0" type="number">0</variable>
+        <variable constant="0" name="spawnSpeed" sid="7870110307524696" static="0" type="number">0.5</variable>
+        <variable constant="0" name="shootSpeed" sid="7350965305276739" static="0" type="number">0.3</variable>
+        <variable constant="0" name="subscribers" sid="1547919414273632" static="0" type="number">0</variable>
+        <event-block sid="3824873703968608">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="2261196584717211" type="System">
+                    <param id="0" name="Interval (seconds)">shootSpeed</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="5734785281177803" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="2209635099990997" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="3964118893794929" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">3</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="3508115805113956" type="Lez89">
+                    <param id="0" name="Object">Poop</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="Image point">1</param>
+                </action>
+                <action id="0" name="Play" sid="3149525787033966" type="Audio">
+                    <param id="0" name="Audio file">shoot</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">20</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="5345910497566442">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="6472618838418384" type="System">
+                            <param id="0" name="Variable">phase</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="7244420033002968" type="Lez89">
+                            <param id="0" name="Object">Poop</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="4769142009819717" type="Poop">
+                            <param id="0" name="Angle">330</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1885147792523467" type="Lez89">
+                            <param id="0" name="Object">Poop</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="1014252045094181" type="Poop">
+                            <param id="0" name="Angle">30</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="883122251927226">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="1694594495221212" type="System" />
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="2472062260202927" type="Background">
+                    <param id="0" name="X">Background.X - bgSpeed</param>
+                </action>
+                <action id="0" name="Set text" sid="9404278058212193" type="SubsText">
+                    <param id="0" name="Text">&quot;ISCRITTI: &quot; &amp; subscribers</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="4953072892030419">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="206593879529372" type="Poop">
+                    <param id="0" name="Object">Enemy</param>
+                </condition>
+                <condition id="0" name="On collision with another object" sid="4008506472652702" type="Poop">
+                    <param id="0" name="Object">AdblockBullet</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="1246746667008149" type="Poop">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="6760674787338142" type="Explosion">
+                    <param id="0" name="Angle">0</param>
+                </action>
+                <action id="0" name="Play" sid="5146230139193616" type="Audio">
+                    <param id="0" name="Audio file">explosion</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-9</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-9" name="Destroy" sid="4447386001878916" type="Enemy" />
+                <action id="-9" name="Destroy" sid="7650091398215252" type="Poop" />
+                <action id="-9" name="Set value" sid="5207096965681379" type="System">
+                    <param id="0" name="Variable">pointschanged</param>
+                    <param id="1" name="Value">subscribers</param>
+                </action>
+                <action id="-10" name="Add to" sid="1901061992135129" type="System">
+                    <param id="0" name="Variable">subscribers</param>
+                    <param id="1" name="Value">100</param>
+                </action>
+                <action id="-9" name="Destroy" sid="1880721808357578" type="AdblockBullet" />
+            </actions>
+        </event-block>
+        <event-block any="1" sid="8742873101103201">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7352079660754991" type="Lez89">
+                    <param id="0" name="Object">Enemy</param>
+                </condition>
+                <condition id="0" name="On collision with another object" sid="3962738486510257" type="Lez89">
+                    <param id="0" name="Object">AdblockBullet</param>
+                </condition>
+                <condition id="0" name="On collision with another object" sid="6675688109256046" type="Lez89">
+                    <param id="0" name="Object">Adblock</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="3543999938475852" type="Enemy" />
+                <action id="0" name="Play" sid="5403284717559031" type="Audio">
+                    <param id="0" name="Audio file">Lezzo</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-9" name="Destroy" sid="1732900119506694" type="AdblockBullet" />
+            </actions>
+            <sub-events>
+                <event-block sid="5170200433238294">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5337142843715612" type="System">
+                            <param id="0" name="Variable">subscribers</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">500</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="4632310581642804" type="System">
+                            <param id="0" name="Variable">subscribers</param>
+                            <param id="1" name="Value">500</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3078519611059241">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="9812819282512321" type="System">
+                    <param id="0" name="Interval (seconds)">spawnSpeed</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="2590571140713772" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="5329364100766759" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="3226375264439608" type="System">
+                    <param id="0" name="Object to create">Enemy</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="X">870</param>
+                    <param id="3" name="Y">random(40, 443)</param>
+                </action>
+                <action id="5" name="Set frame" sid="8280571750497172" type="Enemy">
+                    <param id="0" name="Frame number">random(0,Enemy.AnimationFrameCount)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2979604485966122">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="1222727358732661" type="Background">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">-512</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-1" name="Set X" sid="102653924688438" type="Background">
+                    <param id="0" name="X">Background.X + 512</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7617223046137096">
+            <conditions>
+                <condition id="4" name="On finished" sid="5007231487438465" type="Explosion">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="2205373844319368" type="Explosion" />
+            </actions>
+        </event-block>
+        <event-block sid="5033683829097864">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="9127507421375209" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Play" sid="6151038808328739" type="Audio">
+                    <param id="0" name="Audio file">Get-out-of-there</param>
+                    <param id="2" name="Loop">1</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;baseMusic&quot;</param>
+                </action>
+                <action id="4" name="Preload" sid="3727595700441116" type="Audio">
+                    <param id="0" name="Audio file">explosion</param>
+                </action>
+                <action id="4" name="Preload" sid="788980667460453" type="Audio">
+                    <param id="0" name="Audio file">kiss</param>
+                </action>
+                <action id="4" name="Preload" sid="7866125488238178" type="Audio">
+                    <param id="0" name="Audio file">Lezzo</param>
+                </action>
+                <action id="4" name="Preload" sid="4301847217960981" type="Audio">
+                    <param id="0" name="Audio file">shoot</param>
+                </action>
+                <action id="4" name="Preload" sid="8351756867776398" type="Audio">
+                    <param id="0" name="Audio file">warning</param>
+                </action>
+                <action id="5" name="Set web font" sid="8034325925043491" type="SubsText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="3650710520590297" type="BonusText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="5" name="Set web font" sid="7209014493871949" type="WarningText">
+                    <param id="0" name="Family name">&quot;minercraftoryregular&quot;</param>
+                    <param id="1" name="CSS URL">&quot;stylesheet.css&quot;</param>
+                </action>
+                <action id="-1" name="Set X" sid="4131288315739319" type="BonusText">
+                    <param id="0" name="X">Bonus.X</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Effetto punteggio</comment>
+        <event-block sid="3483570397960918">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="4588036503304169" type="System">
+                    <param id="0" name="Variable">subscribers</param>
+                    <param id="1" name="Comparison">1</param>
+                    <param id="2" name="Value">pointschanged</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Swing" id="0" name="Set activated" sid="4378107758481143" type="SubsText">
+                    <param id="0" name="Activated">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="3520940721178052" type="SubsText">
+                    <param id="0" name="Angle">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="1778549297733354" type="System">
+                    <param id="0" name="Variable">pointschanged</param>
+                    <param id="1" name="Value">subscribers</param>
+                </action>
+                <action id="4" name="Set font color" sid="6019263437436836" type="SubsText">
+                    <param id="0" name="Color">rgb(random(255), random(255), random(255))</param>
+                </action>
+                <action behavior="Flash" id="0" name="Flash" sid="1256814459284052" type="SubsText">
+                    <param id="0" name="&apos;On&apos; time">0</param>
+                    <param id="1" name="&apos;Off&apos; time">0</param>
+                    <param id="2" name="Duration">0.3</param>
+                </action>
+                <action behavior="Swing" id="0" name="Set activated" sid="5403771032033471" type="SubsText">
+                    <param id="0" name="Activated">1</param>
+                </action>
+                <action id="3" name="Set font size" sid="9373962700658997" type="SubsText">
+                    <param id="0" name="Size (pt)">24</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6294478332175818">
+            <conditions>
+                <condition behavior="Flash" id="1" name="On flash ended" sid="4745354535219357" type="SubsText" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set font color" sid="5547512881147105" type="SubsText">
+                    <param id="0" name="Color">rgb(255, 255, 255)</param>
+                </action>
+                <action behavior="Swing" id="0" name="Set activated" sid="6735441910644924" type="SubsText">
+                    <param id="0" name="Activated">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="7242191583471894" type="SubsText">
+                    <param id="0" name="Angle">0</param>
+                </action>
+                <action id="3" name="Set font size" sid="7377476841585645" type="SubsText">
+                    <param id="0" name="Size (pt)">12</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Phase 2</comment>
+        <event-block sid="5462643499845805">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="956987654617611" type="System">
+                    <param id="0" name="Variable">subscribers</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">PHASE2SWITCHTRESHOLD</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="1048342359330086" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" sid="6195769270318076" type="Bonus">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="9989580435950249" type="Bonus" />
+                <action id="11" name="Set collisions enabled" sid="5197029960623654" type="Bonus">
+                    <param id="0" name="Collisions">1</param>
+                </action>
+                <action id="-9" name="Set value" sid="971811361617372" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="9885659613830347" type="BonusText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="6380204274912767" type="BonusText" />
+            </actions>
+        </event-block>
+        <event-block sid="68241612308137">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="5505638899019315" type="Lez89">
+                    <param id="0" name="Object">Bonus</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="7286183118460692" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="1021243956706971" type="Bonus" />
+                <action id="-9" name="Destroy" sid="4503203743228759" type="BonusText" />
+                <action id="-9" name="Set value" sid="115938024672932" type="System">
+                    <param id="0" name="Variable">shootSpeed</param>
+                    <param id="1" name="Value">0.2</param>
+                </action>
+                <action id="-9" name="Set value" sid="4299750636372591" type="System">
+                    <param id="0" name="Variable">bgSpeed</param>
+                    <param id="1" name="Value">bgSpeed * 2</param>
+                </action>
+                <action id="-9" name="Set value" sid="7009911177364135" type="System">
+                    <param id="0" name="Variable">spawnSpeed</param>
+                    <param id="1" name="Value">0.2</param>
+                </action>
+                <action id="0" name="Play" sid="544041292155955" type="Audio">
+                    <param id="0" name="Audio file">kiss</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Phase 4</comment>
+        <event-block sid="4582459881239736">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="4651470282557338" type="System">
+                    <param id="0" name="Variable">subscribers</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Value">PHASE3SWITCHTRESHOLD</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="8927946903648729" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="2513440443416834" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Value">3</param>
+                </action>
+                <action id="-15" name="Set visible" sid="6550862420396028" type="WarningText">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action behavior="Flash" id="0" name="Flash" sid="1334235011140522" type="WarningText">
+                    <param id="0" name="&apos;On&apos; time">0.7</param>
+                    <param id="1" name="&apos;Off&apos; time">0.2</param>
+                    <param id="2" name="Duration">3</param>
+                </action>
+                <action id="0" name="Play" sid="9238334368434657" type="Audio">
+                    <param id="0" name="Audio file">warning</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;warning&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7011435100027813">
+            <conditions>
+                <condition id="0" name="On ended" sid="8412039654305764" type="Audio">
+                    <param id="0" name="Tag">&quot;warning&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="5252009129358781" type="System">
+                    <param id="0" name="Variable">phase</param>
+                    <param id="1" name="Value">4</param>
+                </action>
+                <action id="-15" name="Set visible" sid="1098401335849244" type="WarningText">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-3" name="Create object" sid="6492681140747503" type="System">
+                    <param id="0" name="Object to create">Adblock</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="X">980</param>
+                    <param id="3" name="Y">235</param>
+                </action>
+                <action behavior="CustomMovement" id="12" name="Set enabled" sid="3437208174459224" type="Adblock">
+                    <param id="0" name="State">1</param>
+                </action>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="8906308021472462" type="Adblock">
+                    <param id="0" name="Which">1</param>
+                    <param id="1" name="Speed">-100</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3851175649297842">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="9111667104731228" type="Adblock">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="X co-ordinate">700</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="6350655819003277" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="9792388324901488" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="8501850696413582" type="Adblock">
+                    <param id="0" name="Which">1</param>
+                    <param id="1" name="Speed">0</param>
+                </action>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="2118588126369798" type="Adblock">
+                    <param id="0" name="Which">2</param>
+                    <param id="1" name="Speed">-50</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5334972479411315">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="6691856640404446" type="Adblock">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="Y co-ordinate">140</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="4376524311578242" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="6935803301188562" type="Adblock">
+                    <param id="0" name="Which">2</param>
+                    <param id="1" name="Speed">50</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="18126489463656">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="9697320992176706" type="Adblock">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">340</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="2747850205217798" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="2527110547468397" type="Adblock">
+                    <param id="0" name="Which">2</param>
+                    <param id="1" name="Speed">-50</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3859258353166355">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="7583075509783363" type="Poop">
+                    <param id="0" name="Object">Adblock</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="6906148113475402" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="9162871608950372" type="Poop">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-8" name="Set angle" sid="2064742170586745" type="Explosion">
+                    <param id="0" name="Angle">0</param>
+                </action>
+                <action id="0" name="Play" sid="8523145387411499" type="Audio">
+                    <param id="0" name="Audio file">explosion</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-9</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-9" name="Destroy" sid="9715380254560326" type="Poop" />
+                <action id="-12" name="Subtract from" sid="9469782397172458" type="Adblock">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4990992785428117">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="4753065266100183" type="Adblock">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="418766709468883" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="4034575141447714" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="4564386159463153" type="Adblock">
+                    <param id="0" name="Which">0</param>
+                    <param id="1" name="Speed">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6293673368286085">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="3696927301735321" type="System">
+                    <param id="0" name="Interval (seconds)">spawnSpeed</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="9545453777866439" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="1874654691392799" type="Adblock">
+                    <param id="0" name="Object">AdblockBullet</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="Image point">random(1, 4)</param>
+                </action>
+            </actions>
+        </event-block>
+        <variable constant="0" name="bossExplosions" sid="9382563399047827" static="0" type="number">0</variable>
+        <event-block sid="990866201516936">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="7113461600429196" type="System">
+                    <param id="0" name="Interval (seconds)">0.3</param>
+                </condition>
+                <condition id="-14" name="Compare variable" sid="5550516488200022" type="System">
+                    <param id="0" name="Variable">bossJoined</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="9089322818855821" type="Adblock">
+                    <param id="0" name="Object">Explosion</param>
+                    <param id="1" name="Layer">2</param>
+                    <param id="2" name="Image point">random(4, 12)</param>
+                </action>
+                <action id="0" name="Play" sid="806473548942857" type="Audio">
+                    <param id="0" name="Audio file">explosion</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">-9</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+                <action id="-10" name="Add to" sid="2986632846311857" type="System">
+                    <param id="0" name="Variable">bossExplosions</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="4175046907169891" type="Adblock" />
+                <action id="6" name="Stop" sid="7402780456216638" type="Audio">
+                    <param id="0" name="Tag">&quot;baseMusic&quot;</param>
+                </action>
+                <action id="-10" name="Add to" sid="5102438435620392" type="System">
+                    <param id="0" name="Variable">subscribers</param>
+                    <param id="1" name="Value">1500</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="2119356743886833">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="7841109408645327" type="System">
+                            <param id="0" name="Variable">bossExplosions</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">20</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="7002888966792724" type="System">
+                            <param id="0" name="Variable">bossJoined</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="7577507101229753">
+            <conditions>
+                <condition behavior="Fade" id="0" name="On fade out finished" sid="6287569602615917" type="Adblock" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="2956063656955906" type="System">
+                    <param id="0" name="Seconds">3</param>
+                </action>
+                <action id="-2" name="Go to layout" sid="9758487138961508" type="System">
+                    <param id="0" name="Layout">End</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
