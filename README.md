@@ -11,7 +11,9 @@ Sì, qui troverai tutti i sorgenti che ti permetteranno di modificarlo facilment
 
 Com'è stato realizzato?
 ---
-Questo gioco è stato realizzato tramite l'uso di [Construct 2](https://www.scirra.com/)
+Questo gioco è stato realizzato con la versione gratuita di [Construct 2](https://www.scirra.com/)
+
+È necessario anche il plugin [Swing](https://www.scirra.com/forum/viewtopic.php?t=64261&start=0)
 
 Qual è la licenza?
 ---
